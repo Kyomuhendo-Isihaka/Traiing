@@ -1,0 +1,30 @@
+h1{
+    color: red;
+    text-align: center;
+    text-decoration: underline;
+    font-size: large;
+}
+
+
+.item-list{
+    list-style-type: square;
+    color: blue;
+    font-size: medium;
+    text-align: center;
+
+}
+
+
+.container{
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    margin: auto;
+}
+
+.container img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

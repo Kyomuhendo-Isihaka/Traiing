@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Isihaka Kyomuhendo | Portfolio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bs-body-bg: #0b1326;
+            --bs-body-color: #dae2fd;
+            --primary: #b4c5ff;
+            --primary-container: #ce2c54;
+            --on-primary: #f71344;
+            --secondary-container: #3e495d;
+            --on-secondary-container: #aeb9d0;
+            --tertiary: #7bd0ff;
+            --surface-container: #171f33;
+            --surface-container-low: #131b2e;
+            --surface-bright: #31394d;
+            --on-surface-variant: #c2c6d9;
+            --outline-variant: #424656;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+            overflow-x: hidden;
+        }
+
+        .blueprint-grid {
+            background-image: linear-gradient(rgba(180, 197, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(180, 197, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        /* Custom Styles to match original look */
+        .navbar {
+            background-color: rgba(11, 19, 38, 0.7) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(66, 70, 86, 0.1);
+        }
+
+        .nav-link {
+            color: var(--on-surface-variant) !important;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary), var(--primary-container));
+            color: var(--on-primary);
+            border: none;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary-custom:hover {
+            box-shadow: 0 0 30px rgba(180, 197, 255, 0.3);
+            color: var(--on-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-custom {
+            background-color: rgba(49, 57, 77, 0.2);
+            border: 1px solid rgba(66, 70, 86, 0.2);
+            backdrop-filter: blur(10px);
+            color: var(--bs-body-color);
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--surface-bright);
+            color: var(--bs-body-color);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skill-card {
+            background-color: var(--surface-container);
+            border: 1px solid transparent;
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: rgba(180, 197, 255, 0.2);
+            box-shadow: 0 0 20px rgba(180, 197, 255, 0.1);
+        }
+
+        .project-card {
+            background-color: var(--surface-container-low);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.5s;
+            border: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img-container {
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+
+        .project-card img {
+            transition: transform 0.7s;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .badge-custom {
+            background-color: rgba(62, 73, 93, 0.3);
+            color: var(--on-secondary-container);
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50rem;
+            font-weight: 700;
+        }
+
+        .contact-container {
+            background-color: var(--surface-container);
+            border-radius: 1.5rem;
+            padding: 4rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-control {
+            background-color: #2d3449 !important;
+            border: none;
+            border-bottom: 2px solid rgba(66, 70, 86, 0.2);
+            border-radius: 0;
+            color: var(--bs-body-color) !important;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-bottom-color: var(--tertiary);
+        }
+
+        .form-label-custom {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        footer {
+            background-color: #060e20;
+            border-top: 1px solid rgba(66, 70, 86, 0.1);
+        }
+
+        .footer-link {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--outline-variant);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        /* Decorative circle element */
+        .decor-circles {
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .circle {
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md fixed-top py-3">
+        <div class="container px-4">
+            <a class="navbar-brand fw-black fs-4 tracking-tighter text-primary" href="#"
+                style="font-weight: 900; letter-spacing: -1px; color: var(--primary) !important;">Shaka Hendo</a>
+            <button class="navbar-toggler border-0 text-white" data-bs-target="#navbarNav" data-bs-toggle="collapse"
+                type="button">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-lg-4">
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="d-none d-md-block">
+                <a class="btn btn-primary-custom py-2 px-4 rounded-1 text-sm" href="#">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="min-vh-100 d-flex align-items-center position-relative blueprint-grid overflow-hidden pt-5">
+        <div class="position-absolute w-100 h-100"
+            style="background: linear-gradient(to bottom, transparent, rgba(11,19,38,0.5), var(--bs-body-bg)); pointer-events: none;">
+        </div>
+        <div class="container position-relative z-1 px-4">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="text-primary text-uppercase fw-bold mb-4"
+                        style="font-size: 0.75rem; letter-spacing: 0.2em;">Precision Engineering</p>
+                    <h1 class="hero-title mb-4">
+                        Building Digital <span class="text-gradient">Solutions</span> that Scale.
+                    </h1>
+                    <p class="lead text-on-surface-variant mb-5 max-w-2xl"
+                        style="font-size: 1.25rem; line-height: 1.6;">
+                        High-performance web architecture crafted with intentional asymmetry and atmospheric depth. We
+                        turn complex requirements into elegant, engineered experiences.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a class="btn btn-primary-custom px-4 py-3 rounded-1" href="#projects">View My Work</a>
+                        <a class="btn btn-outline-custom px-4 py-3 rounded-1" href="#contact">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Decorative Circles -->
+        <div class="decor-circles d-none d-lg-block">
+            <div class="circle" style="width: 600px; height: 600px; border-color: rgba(180, 197, 255, 0.3);">
+                <div class="circle" style="width: 450px; height: 450px; border-color: rgba(180, 197, 255, 0.2);">
+                    <div class="circle" style="width: 300px; height: 300px; border-color: rgba(180, 197, 255, 0.1);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section class="py-5 bg-surface-container-low" id="skills">
+        <div class="container py-5 px-4">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h2 class="h1 fw-bold text-primary mb-4">Technical Arsenal</h2>
+                    <p class="text-on-surface-variant lead" style="font-size: 1.1rem;">
+                        A curated stack focused on scalability, maintainability, and exceptional user performance. Every
+                        tool is chosen with architectural integrity in mind.
+                    </p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-xl-4">
+                            <div class="skill-card">
+                                <span class="material-symbols-outlined text-primary mb-4 fs-1"
+                                    style="font-variation-settings: 'FILL' 1;">terminal</span>
+                                <h3 class="h5 fw-bold mb-1">React</h3>
+                                <p class="small text-uppercase tracking-widest text-on-surface-variant mb-0"
+                                    style="font-size: 0.65rem;">Frontend</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-4">
+                            <div class="skill-card">
+                                <span class="material-symbols-outlined text-primary mb-4 fs-1"
+                                    style="font-variation-settings: 'FILL' 1;">layers</span>
+                                <h3 class="h5 fw-bold mb-1">Next.js</h3>
+                                <p class="small text-uppercase tracking-widest text-on-surface-variant mb-0"
+                                    style="font-size: 0.65rem;">Fullstack</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-4">
+                            <div class="skill-card">
+                                <span class="material-symbols-outlined text-primary mb-4 fs-1"
+                                    style="font-variation-settings: 'FILL' 1;">code</span>
+                                <h3 class="h5 fw-bold mb-1">TypeScript</h3>
+                                <p class="small text-uppercase tracking-widest text-on-surface-variant mb-0"
+                                    style="font-size: 0.65rem;">Type Safety</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-4">
+                            <div class="skill-card">
+                                <span class="material-symbols-outlined text-primary mb-4 fs-1"
+                                    style="font-variation-settings: 'FILL' 1;">palette</span>
+                                <h3 class="h5 fw-bold mb-1">Tailwind CSS</h3>
+                                <p class="small text-uppercase tracking-widest text-on-surface-variant mb-0"
+                                    style="font-size: 0.65rem;">UI Systems</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-4">
+                            <div class="skill-card">
+                                <span class="material-symbols-outlined text-primary mb-4 fs-1"
+                                    style="font-variation-settings: 'FILL' 1;">dns</span>
+                                <h3 class="h5 fw-bold mb-1">Node.js</h3>
+                                <p class="small text-uppercase tracking-widest text-on-surface-variant mb-0"
+                                    style="font-size: 0.65rem;">Backend</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-4">
+                            <div class="skill-card">
+                                <span class="material-symbols-outlined text-primary mb-4 fs-1"
+                                    style="font-variation-settings: 'FILL' 1;">database</span>
+                                <h3 class="h5 fw-bold mb-1">PostgreSQL</h3>
+                                <p class="small text-uppercase tracking-widest text-on-surface-variant mb-0"
+                                    style="font-size: 0.65rem;">Storage</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-5 bg-background" id="projects">
+        <div class="container py-5 px-4">
+            <div class="text-center mb-5 max-w-2xl mx-auto">
+                <h2 class="display-5 fw-bold mb-4">Selected Works</h2>
+                <div class="mx-auto bg-primary mb-4" style="height: 4px; width: 80px;"></div>
+                <p class="text-on-surface-variant">A showcase of complex engineering challenges solved with elegant code
+                    and architectural foresight.</p>
+            </div>
+            <div class="row g-4 mt-2">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card h-100">
+                        <div class="project-img-container">
+                            <img alt="SaaS Dashboard"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ80Ay7DDmvZz2MB3e0r0hvUJvPKrJU0ATvnw9CyLbkRrZzEGwz_HFdFmc2pVX-GaqQilKkCQq4ptGA12JKW4Q84gVPCgNeBqLGExaox121mYJXpUFr6ZvIsyBgs9z7ZMw12NZO0VmDmrgcaI8ikmS9rN0RuNYov0-yRq1VlcJx3V9V-vFYvIVDfa4EG1oslLaTqMMs_wSAqNTmXxBCIbAVCMLGWPvyXxFqOlKVZ3depkV752wVrObtBaHU5Zkbntb8Ld0YJkhvK5a" />
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="badge-custom">Fintech</span>
+                                <span class="badge-custom">Next.js</span>
+                            </div>
+                            <h3 class="h4 fw-bold mb-3">Nexus Analytics</h3>
+                            <p class="text-on-surface-variant small mb-4">A real-time data orchestration platform
+                                managing over 1M events per second with sub-50ms latency.</p>
+                            <a class="text-primary fw-bold text-decoration-none d-flex align-items-center gap-2"
+                                href="#">
+                                View Project <span class="material-symbols-outlined fs-6">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card h-100">
+                        <div class="project-img-container">
+                            <img alt="Ecommerce Mobile"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMS9sMDeramg_cHArAJcaAWa6nWvJh6NFHKZIJOfY-hddbphW5c0ThmYmtn3uKvs9Dr2gXFJ_3vgTUOJiQVrlPf4RTeV1SaqReYUJ1sDb0vVNgalG26Y9JXCc43qQENPHEkwu4_E6ap8b_NBONKnvLk92QnLSfUzKKqlAjhSnwu0Qi34UViwF11xFa3we1ndZdkxckYIQo-S02fDLCf4P-WW2UwCD6Nnqnkvg0paKl-oJVKq0VNcS5nCzIRm58iQ9IyYfS0ASOqlTM" />
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="badge-custom">E-Commerce</span>
+                                <span class="badge-custom">React</span>
+                            </div>
+                            <h3 class="h4 fw-bold mb-3">Aura Boutique</h3>
+                            <p class="text-on-surface-variant small mb-4">Headless commerce solution with integrated 3D
+                                product previews and localized multi-currency support.</p>
+                            <a class="text-primary fw-bold text-decoration-none d-flex align-items-center gap-2"
+                                href="#">
+                                View Project <span class="material-symbols-outlined fs-6">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card h-100">
+                        <div class="project-img-container">
+                            <img alt="Blockchain Network"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb5c3AK2uRPlmd2O4Ja3qqbvAaRkpJeDmmZ4IqGERSMek3-UXLMrvCzUORd7TXZzpUEfRwzkmaGKP1vYrcUYMTGUrDvUruO208YTfT3pq59uOJCXl0kkp8eaDndb7z_zV0oIt_FaFHn_Xk1s8pukZ7eWKBwHHoV49zKwiDjw_-mH5sskdhbohuiMgrI5CrHwVIYgp8CQL1cJaQxpBvA-yVmom7OmMz8ifrS9c2BB_1hgSCh7DNFfnfLXeoLvhQ7XmV5UYozntqcqHt" />
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="badge-custom">Web3</span>
+                                <span class="badge-custom">Solidity</span>
+                            </div>
+                            <h3 class="h4 fw-bold mb-3">Vortex Protocol</h3>
+                            <p class="text-on-surface-variant small mb-4">A decentralized liquidity aggregator
+                                optimizing gas fees across four major L2 networks simultaneously.</p>
+                            <a class="text-primary fw-bold text-decoration-none d-flex align-items-center gap-2"
+                                href="#">
+                                View Project <span class="material-symbols-outlined fs-6">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="py-5 bg-surface-container-low">
+        <div class="container py-5 px-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <div class="rounded-4 overflow-hidden shadow-lg" style="aspect-ratio: 1/1;">
+                            <img alt="Software Engineer" class="w-100 h-100 object-fit-cover grayscale"
+                                src="image.png"
+                                style="filter: grayscale(1); transition: filter 0.7s;" />
+                        </div>
+                        <div class="position-absolute bottom-0 end-0 bg-primary p-4 rounded-3 d-none d-md-block shadow"
+                            style="transform: translate(25%, 25%);">
+                            <p class="text-on-primary fw-black h2 mb-0">10+</p>
+                            <p class="text-on-primary fw-bold text-uppercase small tracking-widest mb-0"
+                                style="font-size: 0.6rem;">Years of Craft</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-4 fw-bold mb-4">Architecting the <span
+                            class="text-primary font-italic">Invisible.</span></h2>
+                    <p class="lead text-on-surface-variant mb-5">
+                        I believe that great code is invisible. My philosophy centers on building robust foundations
+                        that empower developers and delight users without the friction of technical debt.
+                    </p>
+                    <div class="d-flex flex-column gap-4">
+                        <div class="d-flex gap-4">
+                            <div class="bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center"
+                                style="width: 48px; height: 48px; background-color: rgba(180, 197, 255, 0.1);">
+                                <span class="material-symbols-outlined text-primary">token</span>
+                            </div>
+                            <div>
+                                <h4 class="h6 fw-bold mb-1">Structural Integrity</h4>
+                                <p class="text-on-surface-variant small mb-0">Systems designed to evolve, not just
+                                    survive.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-4">
+                            <div class="bg-primary-subtle rounded-circle d-flex align-items-center justify-content-center"
+                                style="width: 48px; height: 48px; background-color: rgba(180, 197, 255, 0.1);">
+                                <span class="material-symbols-outlined text-primary">speed</span>
+                            </div>
+                            <div>
+                                <h4 class="h6 fw-bold mb-1">Performance First</h4>
+                                <p class="text-on-surface-variant small mb-0">Optimization as a core feature, not an
+                                    afterthought.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+        <div class="container py-5 px-4">
+            <div class="max-w-4xl mx-auto contact-container">
+                <div class="position-absolute top-0 end-0 bg-primary opacity-10 rounded-circle"
+                    style="width: 200px; height: 200px; transform: translate(50%, -50%);"></div>
+                <div class="mb-5 position-relative">
+                    <h2 class="display-5 fw-bold mb-3">Start a Connection</h2>
+                    <p class="text-on-surface-variant">Have a project that requires precision engineering? Let's discuss
+                        how we can build it together.</p>
+                </div>
+                <form action="#" class="position-relative" method="POST">
+                    <div class="row g-5">
+                        <div class="col-md-6 d-flex flex-column gap-5">
+                            <div>
+                                <label class="form-label-custom" for="name">Full Name</label>
+                                <input class="form-control" id="name" name="name" placeholder="Enter your name"
+                                    required="" type="text" />
+                            </div>
+                            <div>
+                                <label class="form-label-custom" for="email">Email Address</label>
+                                <input class="form-control" id="email" name="email" placeholder="email@example.com"
+                                    required="" type="email" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom" for="message">Your Message</label>
+                            <textarea class="form-control h-100" id="message" name="message"
+                                placeholder="Tell me about your project..." required="" rows="5"></textarea>
+                        </div>
+                        <div class="col-12 mt-5">
+                            <button class="btn btn-primary-custom w-100 py-3 fs-5" type="submit">Initiate
+                                Project</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container px-4">
+            <div class="row align-items-center gy-4">
+                <div class="col-md-6">
+                    <p class="footer-link mb-0">© 2024 Digital Architect. Engineered with precision.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-md-end gap-5">
+                        <a class="footer-link" href="#">GitHub</a>
+                        <a class="footer-link" href="#">LinkedIn</a>
+                        <a class="footer-link" href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
